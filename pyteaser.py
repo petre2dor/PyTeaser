@@ -8,6 +8,7 @@ language = "ro"
 with open('resources/stopwords-' + language + '.txt', 'r') as infile:
     data = infile.read()
 stopWords = data.splitlines()
+stopWords = [unicode(x.decode('utf-8')) for x in stopWords]
 
 # stopWords = set([
 #     "-", " ", ",", ".", "a", "e", "i", "o", "u", "t", "about", "above",
@@ -80,6 +81,7 @@ def SummarizeUrl(url):
         return None
 
     if not (article and article.cleaned_text and article.title):
+        print 'No article found'
         return None
 
     summaries = Summarize(unicode(article.title),
@@ -186,10 +188,8 @@ def keywords(text):
     ignores blacklisted words in stopWords,
     counts the number of occurrences of each word
     """
+
     text = split_words(text)
-    print text
-    [x.encode('utf-8') for x in text]
-    print text
     numWords = len(text)  # of words before removing blacklist words
     freq = Counter(x for x in text if x not in stopWords)
 

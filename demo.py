@@ -9,5 +9,5 @@ from pyteaser import SummarizeUrl
 #     pprint(summaries)
 
 
-summaries = SummarizeUrl('http://www.bbc.co.uk/news/magazine-29631332')
+summaries = SummarizeUrl('http://www.ziare.com/europa/uniunea-europeana/la-tribune-ilustreaza-saracia-europeana-cu-imagini-din-romania-1221829')
 print summaries
